@@ -1,43 +1,46 @@
 export default class PortaModel {
-    #numero: number;
-    #presente: boolean;
-    #selecionada: boolean;
-    #aberta: boolean;
-
+    #numero: number
+    #presente: boolean
+    #selecionada: boolean
+    #aberta: boolean
+ 
     constructor(numero: number, presente = false, selecionada = false, aberta = false) {
-        this.#numero = numero;
-        this.#presente = presente;
-        this.#selecionada = selecionada;
-        this.#aberta = aberta;
+        this.#numero = numero
+        this.#presente = presente
+        this.#selecionada = selecionada
+        this.#aberta = aberta
     }
-
+ 
     get numero() {
-        return this.#numero;
+        return this.#numero
     }
-
+ 
     get presente() {
-        return this.#presente;
+        return this.#presente
     }
-
+ 
     get selecionada() {
-        return this.#selecionada;
+        return this.#selecionada
     }
 
     get aberta() {
-        return this.#aberta;
+        return this.#aberta
     }
-
-    desmarcar(){
+ 
+    get fechada() {
+        return !this.aberta
+    }
+ 
+    desmarcar() {
         const selecionada = false
+        return new PortaModel(this.numero, this.presente, selecionada, this.aberta)        
+    }
+ 
+    alternarSelecao() {
+        const selecionada = !this.selecionada
         return new PortaModel(this.numero, this.presente, selecionada, this.aberta)
     }
-    
-
-    alternarSelecao() {
-        const selecionada = !this.selecionada;
-        return new PortaModel(this.numero, this.#presente, selecionada, this.aberta) // nova instancia de porta
-    }
-
+ 
     abrir() {
         const aberta = true
         return new PortaModel(this.numero, this.presente, this.selecionada, aberta)
