@@ -1,12 +1,14 @@
 import styles from "../styles/Porta.module.css";
 import PortaModel from "../model/porta";
 import Presente from "./Presente"
+import Head from "next/head";
 interface PortaProps {
   value: PortaModel;
   onChange: (novaPorta: PortaModel) => void;
 }
 
 export default function Porta(props: PortaProps) {
+
   const porta = props.value;
   const selecionada = porta.selecionada && !porta.aberta ? styles.selecionada : "";
 
@@ -20,7 +22,7 @@ export default function Porta(props: PortaProps) {
     return (
       <div className={styles.porta}>
         <div className={styles.numero}>{porta.numero}</div>
-        <div className={styles.macaneta} onClick={abrir}></div>
+        <div className={styles.macaneta} onClick={abrir} id="open"></div>
       </div>
     );
   }
